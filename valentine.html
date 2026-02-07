@@ -1,0 +1,76 @@
+
+<html>
+<head>
+    <title>Valentine 💕</title>
+    <style>
+        body { 
+            background-color: pink;
+            text-align: center;
+            font-family: Arial;
+            overflow: hidden;
+        }
+        h1 { margin-top: 50px; }
+        button {
+            font-size: 20px;
+            padding: 15px 30px;
+            margin: 20px;
+            cursor: pointer;
+        }
+        .heart {  
+            position: absolute;
+            font-size: 20px;
+            animation: floatUp 5s linear infinite;
+        }
+        @keyframes floatUp {  
+            0% { transform: translateY(0px); opacity: 1; }
+            100% { transform: translateY(-600px); opacity: 0; }
+            }
+    </style>
+</head>               
+<body>
+    <h1>Hey Rebeka! 💕</h1>
+    <p>Will u be my Valentine?</p>
+    <p>— Darius</p>
+
+    <button id="yesBtn">YES 💕</button>
+    <button id="noBtn">NO 😢</button>
+    <script>
+        let yesBtn = document.getElementById("yesBtn"); 
+        let noBtn = document.getElementById("noBtn");
+
+        let yesSize = 20;
+        let noSize = 20;
+
+        noBtn.onclick = function() {  
+            noSize -= 2;
+            yesSize += 4;
+
+            noBtn.style.fontSize = noSize + "px";  
+            yesBtn.style.fontSize = yesSize + "px";  
+
+            if (noSize <= 5) { 
+                noBtn.disabled = true;
+                noBtn.innerText = "😈";
+                alert("YOU CANNOT ESCAPE 😈");
+            }
+        };
+
+        yesBtn.onclick = function() {
+            alert("YAY TE IUBESC IUBIRE MICA!!! 💕💍");
+        };
+
+        function createHeart() {
+            let heart = document.createElement("div");
+            heart.className = "heart";
+            heart.innerText = "💖";
+            heart.style.left = Math.random() * window.innerWidth + "px"; 
+            heart.style.animationDuration = 3 + Math.random() * 3 + "s"; 
+            document.body.appendChild(heart); 
+            setTimeout(() => heart.remove(), 6000); 
+        }
+
+        setInterval(createHeart, 500);
+    </script>
+
+</body>
+</html>
